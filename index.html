@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silve — Hôtel & Retreat</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --sapin:#1C3A2A;
+  --sapin-deep:#122619;
+  --sapin-mid:#2A4F3A;
+  --beige:#F2EDE4;
+  --beige-dark:#E0D8CB;
+  --beige-mid:#EDE6DA;
+  --sand:#C8BC9F;
+  --or:#9C8055;
+  --or-light:#B9986A;
+  --cream:#FAF8F4;
+  --text-dark:#1C2B1F;
+  --text-mid:#4A5C50;
+  --text-light:#8A9A8E;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.6rem 4rem;
+  transition:all 0.4s;
+}
+nav.scrolled{background:rgba(250,248,244,0.96);border-bottom:1px solid rgba(28,58,42,0.08)}
+.nav-logo{
+  font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;
+  letter-spacing:0.25em;text-transform:uppercase;
+  color:#FAF8F4;text-decoration:none;
+}
+nav.scrolled .nav-logo{color:var(--sapin)}
+.nav-center{
+  position:absolute;left:50%;transform:translateX(-50%);
+  display:flex;gap:3rem;list-style:none;
+}
+.nav-center a{
+  font-size:0.7rem;font-weight:300;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(250,248,244,0.75);text-decoration:none;transition:color 0.2s;
+}
+nav.scrolled .nav-center a{color:var(--text-mid)}
+.nav-center a:hover{color:var(--or-light)}
+.nav-cta{
+  font-size:0.68rem;font-weight:300;letter-spacing:0.22em;text-transform:uppercase;
+  color:#FAF8F4;border:1px solid rgba(250,248,244,0.35);
+  padding:0.65rem 1.4rem;text-decoration:none;transition:all 0.25s;
+}
+nav.scrolled .nav-cta{color:var(--sapin);border-color:rgba(28,58,42,0.25)}
+.nav-cta:hover{background:var(--or);border-color:var(--or);color:#fff}
+
+/* HERO */
+.hero{
+  height:100vh;position:relative;display:flex;align-items:center;
+  background:var(--sapin-deep);overflow:hidden;
+}
+.hero-forest{
+  position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900'%3E%3Crect width='1200' height='900' fill='%23122619'/%3E%3Crect x='40' y='0' width='22' height='900' fill='%231a3026' rx='5'/%3E%3Crect x='130' y='50' width='16' height='850' fill='%23162b21' rx='4'/%3E%3Crect x='240' y='0' width='26' height='900' fill='%231e3429' rx='5'/%3E%3Crect x='370' y='80' width='18' height='820' fill='%23152a20' rx='4'/%3E%3Crect x='480' y='20' width='28' height='880' fill='%231c3228' rx='5'/%3E%3Crect x='600' y='60' width='20' height='840' fill='%23192e24' rx='4'/%3E%3Crect x='720' y='0' width='24' height='900' fill='%231e3429' rx='5'/%3E%3Crect x='840' y='40' width='17' height='860' fill='%23162b21' rx='4'/%3E%3Crect x='950' y='10' width='22' height='890' fill='%231a3026' rx='5'/%3E%3Crect x='1060' y='70' width='19' height='830' fill='%231c3228' rx='4'/%3E%3Crect x='1130' y='0' width='30' height='900' fill='%231e3429' rx='5'/%3E%3Cellipse cx='51' cy='0' rx='140' ry='55' fill='%23102217' opacity='0.9'/%3E%3Cellipse cx='138' cy='50' rx='160' ry='60' fill='%23142619' opacity='0.9'/%3E%3Cellipse cx='253' cy='0' rx='180' ry='65' fill='%23122418' opacity='0.9'/%3E%3Cellipse cx='379' cy='80' rx='150' ry='58' fill='%23112317' opacity='0.9'/%3E%3Cellipse cx='494' cy='20' rx='190' ry='68' fill='%23132518' opacity='0.9'/%3E%3Cellipse cx='610' cy='60' rx='165' ry='62' fill='%23112317' opacity='0.9'/%3E%3Cellipse cx='732' cy='0' rx='175' ry='64' fill='%23122418' opacity='0.9'/%3E%3Cellipse cx='848' cy='40' rx='145' ry='56' fill='%23102217' opacity='0.9'/%3E%3Cellipse cx='961' cy='10' rx='168' ry='61' fill='%23142619' opacity='0.9'/%3E%3Cellipse cx='1069' cy='70' rx='155' ry='57' fill='%23112317' opacity='0.9'/%3E%3Crect x='0' y='600' width='1200' height='300' fill='%230d1e12' opacity='0.7'/%3E%3C/svg%3E") center/cover no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(18,38,25,0.55) 0%,rgba(12,22,16,0.4) 60%,rgba(18,38,25,0.7) 100%);
+}
+.hero-content{position:relative;z-index:2;padding:0 4rem;max-width:680px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.75rem;
+  font-size:0.65rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;
+  color:var(--or-light);margin-bottom:2rem;
+}
+.hero-badge-line{width:36px;height:1px;background:var(--or-light)}
+.hero-stars{display:flex;gap:4px;margin-left:0.5rem}
+.hero-star{width:7px;height:7px;background:var(--or-light);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3.8rem,8.5vw,6.5rem);
+  font-weight:300;line-height:1.0;color:#FAF8F4;margin-bottom:0.4rem;
+}
+.hero-title-italic{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,4rem);font-style:italic;font-weight:300;
+  color:rgba(250,248,244,0.6);display:block;margin-bottom:2rem;letter-spacing:0.04em;
+}
+.hero-sub{
+  font-size:0.85rem;font-weight:200;line-height:1.9;
+  color:rgba(250,248,244,0.55);max-width:400px;margin-bottom:3rem;letter-spacing:0.03em;
+}
+.hero-actions{display:flex;gap:1.2rem;align-items:center}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:0.8rem;
+  font-size:0.68rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;
+  color:#FAF8F4;background:var(--sapin-mid);border:none;
+  padding:1.1rem 2.2rem;text-decoration:none;cursor:pointer;transition:all 0.3s;
+}
+.btn-primary:hover{background:var(--or);gap:1.2rem}
+.btn-primary::after{content:'→'}
+.btn-ghost{
+  font-size:0.68rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;
+  color:rgba(250,248,244,0.6);text-decoration:none;
+  border-bottom:1px solid rgba(250,248,244,0.2);padding-bottom:2px;transition:all 0.2s;
+}
+.btn-ghost:hover{color:rgba(250,248,244,1);border-color:rgba(250,248,244,0.5)}
+.hero-right{
+  position:absolute;right:4rem;bottom:4rem;z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:1rem;
+  color:rgba(250,248,244,0.3);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;
+  writing-mode:vertical-rl;
+}
+.scroll-bar{width:1px;height:60px;background:rgba(250,248,244,0.15);position:relative;overflow:hidden}
+.scroll-bar::after{
+  content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;
+  background:var(--or);animation:scrollAnim 2.2s ease-in-out infinite;
+}
+@keyframes scrollAnim{0%{top:-100%}100%{top:100%}}
+
+/* CHIFFRES */
+.chiffres{
+  background:var(--sapin);padding:5rem 4rem;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid rgba(242,237,228,0.06);
+}
+.chiffre-item{
+  padding:2.5rem;border-right:1px solid rgba(242,237,228,0.08);text-align:center;
+}
+.chiffre-item:last-child{border-right:none}
+.chiffre-num{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-weight:300;color:#FAF8F4;line-height:1;margin-bottom:0.4rem;
+}
+.chiffre-unit{font-size:1.2rem;color:var(--or-light)}
+.chiffre-lbl{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,248,244,0.35)}
+
+/* SECTION BASE */
+.section{padding:8rem 4rem}
+.eye{
+  font-size:0.65rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;
+  color:var(--or);margin-bottom:1.8rem;display:flex;align-items:center;gap:1.2rem;
+}
+.eye::before{content:'';width:32px;height:1px;background:var(--or);display:block}
+.section-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--sapin);
+}
+.section-h em{font-style:italic}
+.link-line{
+  font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--sapin);text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.6rem;transition:gap 0.2s;
+}
+.link-line:hover{gap:1.1rem}
+.link-line::after{content:'→'}
+
+/* MANIFESTE */
+.manifeste{background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.manifeste-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.18;
+  color:var(--sapin);margin-bottom:2rem;
+}
+.manifeste-h em{font-style:italic;color:var(--text-mid)}
+.manifeste-p{font-size:0.88rem;font-weight:200;line-height:2;color:var(--text-mid);margin-bottom:1.5rem}
+.manifeste-visual{position:relative}
+.vis-frame{aspect-ratio:4/5;background:var(--sapin);overflow:hidden;position:relative}
+.vis-inner{
+  position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='620'%3E%3Crect width='500' height='620' fill='%231C3A2A'/%3E%3Crect x='40' y='0' width='14' height='620' fill='%23162e20' rx='3'/%3E%3Crect x='150' y='0' width='18' height='620' fill='%231a3426' rx='4'/%3E%3Crect x='270' y='0' width='12' height='620' fill='%23152e1f' rx='3'/%3E%3Crect x='380' y='0' width='20' height='620' fill='%231c3a2a' rx='4'/%3E%3Crect x='450' y='0' width='10' height='620' fill='%23162e20' rx='2'/%3E%3Cellipse cx='47' cy='0' rx='100' ry='38' fill='%23102218' opacity='0.9'/%3E%3Cellipse cx='159' cy='0' rx='120' ry='44' fill='%23132618' opacity='0.9'/%3E%3Cellipse cx='276' cy='0' rx='95' ry='36' fill='%23112217' opacity='0.9'/%3E%3Cellipse cx='390' cy='0' rx='115' ry='42' fill='%23132618' opacity='0.9'/%3E%3Crect x='100' y='360' width='300' height='260' fill='%23F2EDE4' opacity='0.07' rx='1'/%3E%3Cellipse cx='250' cy='362' rx='5' ry='5' fill='%23B9986A' opacity='0.6'/%3E%3C/svg%3E") center/cover no-repeat;
+}
+.vis-stat{
+  position:absolute;bottom:-2rem;left:-2rem;
+  background:var(--beige);border:1px solid rgba(28,58,42,0.08);padding:1.6rem 1.8rem;
+}
+.vis-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:300;color:var(--sapin);line-height:1}
+.vis-lbl{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--or);margin-top:0.5rem}
+
+/* CHAMBRES */
+.chambres-section{background:var(--beige-mid)}
+.chambres-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
+.chambres-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:1rem}
+.room{background:var(--cream);overflow:hidden;cursor:pointer;transition:transform 0.3s}
+.room:hover{transform:translateY(-5px)}
+.room-img{position:relative;overflow:hidden}
+.room-body{padding:1.6rem}
+.room-cat{font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--or);margin-bottom:0.5rem}
+.room-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:300;color:var(--sapin);margin-bottom:0.6rem}
+.room-desc{font-size:0.78rem;font-weight:200;line-height:1.75;color:var(--text-mid);margin-bottom:1.2rem}
+.room-ft{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid rgba(28,58,42,0.07)}
+.room-price{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--sapin);font-weight:300}
+.room-price small{font-family:'DM Sans';font-size:0.65rem;color:var(--text-light);letter-spacing:0.08em;font-weight:200}
+.room-resa{
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--sapin);border:1px solid rgba(28,58,42,0.18);
+  padding:0.55rem 1rem;text-decoration:none;transition:all 0.2s;
+}
+.room-resa:hover{background:var(--sapin);color:#FAF8F4}
+.room-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.tag{
+  font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;
+  background:rgba(28,58,42,0.06);color:var(--text-mid);padding:0.3rem 0.7rem;
+}
+
+/* THE NERVE */
+.nerve-section{
+  background:var(--sapin-deep);color:#FAF8F4;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:600px;
+}
+.nerve-left{padding:6rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.nerve-star-badge{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  background:rgba(156,128,85,0.15);border:1px solid rgba(156,128,85,0.3);
+  padding:0.5rem 1rem;margin-bottom:2.5rem;width:fit-content;
+}
+.nerve-star-badge span{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--or-light)}
+.nerve-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,5vw,4rem);font-weight:300;line-height:1.05;margin-bottom:0.3rem;
+}
+.nerve-italic{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:300;
+  color:rgba(250,248,244,0.4);font-size:clamp(1.2rem,2.5vw,1.8rem);margin-bottom:2rem;
+}
+.nerve-sub{
+  font-size:0.85rem;font-weight:200;line-height:1.95;
+  color:rgba(250,248,244,0.5);margin:2rem 0;max-width:440px;
+}
+.nerve-menu{display:flex;flex-direction:column;gap:0}
+.nerve-dish{
+  padding:1rem 0;border-bottom:1px solid rgba(250,248,244,0.06);
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+}
+.nerve-dish:first-child{border-top:1px solid rgba(250,248,244,0.06)}
+.dish-name{font-size:0.82rem;font-weight:200;color:rgba(250,248,244,0.75)}
+.dish-note{font-size:0.68rem;letter-spacing:0.12em;color:var(--or);font-style:italic;white-space:nowrap}
+.nerve-right{
+  background:var(--sapin-mid);position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.nerve-visual{
+  position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect width='600' height='600' fill='%232A4F3A'/%3E%3Ccircle cx='300' cy='300' r='200' fill='none' stroke='%23F2EDE4' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='300' cy='300' r='150' fill='none' stroke='%23F2EDE4' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='300' cy='300' r='80' fill='none' stroke='%239C8055' stroke-width='0.5' opacity='0.2'/%3E%3Cpath d='M300 100 Q340 200 300 300 Q260 400 300 500' fill='none' stroke='%23F2EDE4' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M100 300 Q200 260 300 300 Q400 340 500 300' fill='none' stroke='%23F2EDE4' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='300' cy='300' r='6' fill='%239C8055' opacity='0.6'/%3E%3C/svg%3E") center/cover no-repeat;
+}
+.nerve-quote{position:relative;z-index:2;padding:3rem;text-align:center}
+.nerve-q{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:1.4rem;font-weight:300;color:rgba(250,248,244,0.7);line-height:1.5;max-width:300px;
+}
+
+/* CAUDALIE */
+.caudalie-section{background:var(--beige);display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:500px}
+.caudalie-visual{
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='500'%3E%3Crect width='600' height='500' fill='%231C3A2A'/%3E%3Ccircle cx='300' cy='250' r='180' fill='none' stroke='%23F2EDE4' stroke-width='0.4' opacity='0.08'/%3E%3Ccircle cx='300' cy='250' r='120' fill='none' stroke='%23F2EDE4' stroke-width='0.4' opacity='0.08'/%3E%3Ccircle cx='300' cy='250' r='60' fill='%23F2EDE4' opacity='0.04'/%3E%3Cpath d='M300 120 L300 380 M180 250 L420 250' stroke='%23F2EDE4' stroke-width='0.4' opacity='0.06'/%3E%3Cellipse cx='300' cy='250' rx='30' ry='30' fill='%23C8BC9F' opacity='0.2'/%3E%3C/svg%3E") center/cover no-repeat;
+}
+.caudalie-content{padding:6rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.caudalie-partner{
+  font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--text-light);margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem;
+}
+.caudalie-partner::before{content:'';width:24px;height:1px;background:var(--sand);display:block}
+.caudalie-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;color:var(--sapin);margin-bottom:0.3rem;
+}
+.caudalie-h em{font-style:italic;color:var(--text-mid)}
+.caudalie-p{font-size:0.85rem;font-weight:200;line-height:2;color:var(--text-mid);margin:1.5rem 0 2.5rem}
+.soins-list{display:flex;flex-direction:column;gap:0}
+.soin{
+  display:flex;align-items:center;gap:1.2rem;
+  padding:0.85rem 0;border-bottom:1px solid rgba(28,58,42,0.07);
+  font-size:0.8rem;font-weight:200;color:var(--text-mid);
+}
+.soin:first-child{border-top:1px solid rgba(28,58,42,0.07)}
+.soin::before{content:'';width:5px;height:5px;background:var(--or);border-radius:50%;flex-shrink:0}
+
+/* DETOX */
+.detox-section{background:var(--sapin);padding:6rem 4rem}
+.detox-header{text-align:center;margin-bottom:5rem}
+.detox-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3rem);font-weight:300;color:#FAF8F4;margin-bottom:1rem;
+}
+.detox-h em{font-style:italic;color:rgba(250,248,244,0.45)}
+.detox-sub{font-size:0.82rem;font-weight:200;color:rgba(250,248,244,0.4);letter-spacing:0.06em}
+.detox-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06)}
+.detox-item{
+  background:var(--sapin);padding:3rem 2.5rem;transition:background 0.3s;
+}
+.detox-item:hover{background:var(--sapin-mid)}
+.detox-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem;font-weight:300;color:var(--or);opacity:0.4;margin-bottom:1.5rem;
+}
+.detox-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:300;color:#FAF8F4;margin-bottom:0.8rem}
+.detox-name em{font-style:italic}
+.detox-desc{font-size:0.78rem;font-weight:200;line-height:1.85;color:rgba(250,248,244,0.4)}
+
+/* RESERVATION */
+.resa-section{background:var(--cream);text-align:center;padding:8rem 4rem}
+.resa-eye{
+  font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--or);
+  margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:1.2rem;
+}
+.resa-eye::before,.resa-eye::after{content:'';width:36px;height:1px;background:var(--or);display:block}
+.resa-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5vw,4rem);font-weight:300;
+  color:var(--sapin);margin-bottom:0.8rem;line-height:1.1;
+}
+.resa-h em{font-style:italic}
+.resa-sub{font-size:0.85rem;font-weight:200;color:var(--text-mid);margin-bottom:3.5rem;letter-spacing:0.04em}
+.resa-widget{
+  display:inline-flex;max-width:780px;width:100%;
+  background:#fff;border:1px solid rgba(28,58,42,0.1);overflow:hidden;
+}
+.resa-field{
+  flex:1;padding:1.4rem 1.5rem;
+  border:none;border-right:1px solid rgba(28,58,42,0.07);
+  background:transparent;font-family:'DM Sans';font-size:0.78rem;font-weight:200;
+  color:var(--text-dark);outline:none;
+}
+.resa-field::placeholder{color:var(--sand);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase}
+.resa-select{
+  flex:0.7;padding:1.4rem 1.2rem;
+  border:none;border-right:1px solid rgba(28,58,42,0.07);
+  background:transparent;appearance:none;
+  font-family:'DM Sans';font-size:0.68rem;letter-spacing:0.1em;
+  color:var(--sand);text-transform:uppercase;outline:none;cursor:pointer;
+}
+.resa-select option{color:var(--text-dark)}
+.resa-btn{
+  background:var(--sapin);color:#FAF8F4;border:none;padding:0 2.2rem;
+  font-family:'DM Sans';font-size:0.68rem;font-weight:300;letter-spacing:0.22em;
+  text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.2s;
+}
+.resa-btn:hover{background:var(--or)}
+
+/* FOOTER */
+footer{background:#0d1a12;padding:5rem 4rem 2.5rem}
+.footer-grid{
+  display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:3rem;
+  margin-bottom:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.footer-brand{
+  font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:300;
+  color:#FAF8F4;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;
+}
+.footer-tag{font-size:0.8rem;font-weight:200;line-height:1.8;color:rgba(250,248,244,0.3)}
+.footer-col-h{font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--or);margin-bottom:1.2rem}
+.footer-ul{list-style:none}
+.footer-ul li{margin-bottom:0.6rem}
+.footer-ul a{font-size:0.78rem;font-weight:200;color:rgba(250,248,244,0.35);text-decoration:none;transition:color 0.2s}
+.footer-ul a:hover{color:#FAF8F4}
+.footer-bottom{display:flex;justify-content:space-between;font-size:0.68rem;font-weight:200;color:rgba(250,248,244,0.18)}
+
+/* ANIMATIONS */
+.fade{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1.2rem 1.5rem}
+  .nav-center{display:none}
+  .hero-content{padding:0 1.5rem;max-width:100%}
+  .hero-right{right:1.5rem}
+  .section{padding:5rem 1.5rem}
+  .chiffres{grid-template-columns:repeat(2,1fr);padding:3rem 1.5rem}
+  .manifeste{grid-template-columns:1fr;gap:3rem}
+  .vis-stat{bottom:0;left:0}
+  .chambres-grid{grid-template-columns:1fr}
+  .nerve-section{grid-template-columns:1fr}
+  .nerve-right{min-height:300px}
+  .caudalie-section{grid-template-columns:1fr}
+  .caudalie-visual{min-height:280px}
+  .detox-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .resa-widget{flex-direction:column}
+  .resa-field,.resa-select{border-right:none;border-bottom:1px solid rgba(28,58,42,0.07)}
+  .resa-btn{padding:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Silve</a>
+  <ul class="nav-center">
+    <li><a href="#chambres">Chambres</a></li>
+    <li><a href="#restaurant">The Nerve</a></li>
+    <li><a href="#spa">Spa Caudalie</a></li>
+    <li><a href="#retraites">Retraites</a></li>
+    <li><a href="#concept">Le Domaine</a></li>
+  </ul>
+  <a href="#reservation" class="nav-cta">Réserver</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-forest"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-line"></div>
+      Forêt des Landes · 5 étoiles
+      <div class="hero-stars">
+        <div class="hero-star"></div>
+        <div class="hero-star"></div>
+        <div class="hero-star"></div>
+        <div class="hero-star"></div>
+        <div class="hero-star"></div>
+      </div>
+    </div>
+    <h1 class="hero-title">Silve</h1>
+    <span class="hero-title-italic">Hôtel & Retreat</span>
+    <p class="hero-sub">Un sanctuaire au cœur de la forêt landaise. Ici, la nature détoxifie, le silence régénère, et chaque saison révèle une forme de beauté nouvelle.</p>
+    <div class="hero-actions">
+      <a href="#reservation" class="btn-primary">Réserver un séjour</a>
+      <a href="#concept" class="btn-ghost">Découvrir le concept</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="scroll-bar"></div>
+    Défiler
+  </div>
+</section>
+
+<!-- CHIFFRES CLÉS -->
+<div class="chiffres">
+  <div class="chiffre-item fade">
+    <div class="chiffre-num">20</div>
+    <div class="chiffre-lbl">Chambres & suites</div>
+  </div>
+  <div class="chiffre-item fade">
+    <div class="chiffre-num">1<span class="chiffre-unit">★</span></div>
+    <div class="chiffre-lbl">The Nerve — Restaurant</div>
+  </div>
+  <div class="chiffre-item fade">
+    <div class="chiffre-num">∞</div>
+    <div class="chiffre-lbl">Spa en partenariat Caudalie</div>
+  </div>
+  <div class="chiffre-item fade">
+    <div class="chiffre-num">4</div>
+    <div class="chiffre-lbl">Saisons de retraite</div>
+  </div>
+</div>
+
+<!-- MANIFESTE -->
+<section class="section manifeste" id="concept">
+  <div class="manifeste-text fade">
+    <div class="eye">Notre manifeste</div>
+    <h2 class="manifeste-h">Se reconnecter.<br><em>Vraiment.</em></h2>
+    <p class="manifeste-p">Silve est né d'une conviction : la forêt soigne. Pas comme un cliché, mais comme un fait. La phytoncide des pins, l'humidité douce des sous-bois, le silence absolu des matins landais — tout ici conspire à remettre le corps et l'esprit à l'endroit.</p>
+    <p class="manifeste-p">Un hôtel 5 étoiles ne signifie pas l'excès. Ici, le luxe c'est l'espace, la lumière, la qualité des matières et de ce qu'on met dans son assiette. Chaque séjour est conçu comme une cure douce, à votre rythme.</p>
+    <a href="#" class="link-line">Notre philosophie détox</a>
+  </div>
+  <div class="manifeste-visual fade">
+    <div class="vis-frame"><div class="vis-inner"></div></div>
+    <div class="vis-stat">
+      <div class="vis-num">12</div>
+      <div class="vis-lbl">hectares de forêt privée</div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAMBRES -->
+<section class="section chambres-section" id="chambres">
+  <div class="chambres-header fade">
+    <div>
+      <div class="eye">Hébergements</div>
+      <h2 class="section-h">Chambres<br><em>&amp; suites</em></h2>
+    </div>
+    <a href="#" class="link-line" style="opacity:0.45">Voir les 20 chambres</a>
+  </div>
+  <div class="chambres-grid">
+
+    <div class="room fade">
+      <div class="room-img">
+        <svg width="100%" height="260" viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="260" fill="#1C3A2A"/>
+          <rect x="30" y="0" width="16" height="260" fill="#162e20" rx="4"/>
+          <rect x="140" y="0" width="20" height="260" fill="#1a3426" rx="4"/>
+          <rect x="280" y="0" width="14" height="260" fill="#152e1f" rx="4"/>
+          <rect x="400" y="0" width="22" height="260" fill="#1c3a2a" rx="4"/>
+          <rect x="530" y="0" width="12" height="260" fill="#162e20" rx="3"/>
+          <rect x="120" y="120" width="360" height="140" fill="#F2EDE4" rx="1" opacity="0.07"/>
+          <rect x="220" y="150" width="80" height="80" fill="#F2EDE4" opacity="0.1" rx="1"/>
+          <rect x="310" y="150" width="80" height="80" fill="#F2EDE4" opacity="0.1" rx="1"/>
+          <rect x="230" y="160" width="160" height="55" fill="#E0D8CB" opacity="0.12" rx="1"/>
+          <circle cx="300" cy="122" r="4" fill="#B9986A" opacity="0.55"/>
+        </svg>
+      </div>
+      <div class="room-body">
+        <div class="room-cat">Suite — 55 m²</div>
+        <div class="room-name">Suite Canopée</div>
+        <div class="room-tags">
+          <span class="tag">Terrasse privée</span>
+          <span class="tag">Bain en cuivre</span>
+          <span class="tag">Vue forêt</span>
+        </div>
+        <p class="room-desc">La plus haute des suites. Perchée entre les cimes, elle offre une terrasse suspendue, un bain sur pied face aux pins, et un double séjour baigné de lumière filtrée. 3 suites disponibles.</p>
+        <div class="room-ft">
+          <div class="room-price">580 € <small>/ nuit</small></div>
+          <a href="#reservation" class="room-resa">Réserver</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="room fade">
+      <div class="room-img">
+        <svg width="100%" height="180" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="180" fill="#2A4F3A"/>
+          <rect x="20" y="0" width="10" height="180" fill="#1e3d2c" rx="3"/>
+          <rect x="90" y="0" width="14" height="180" fill="#253f30" rx="3"/>
+          <rect x="190" y="0" width="12" height="180" fill="#1e3d2c" rx="3"/>
+          <rect x="260" y="0" width="8" height="180" fill="#253f30" rx="3"/>
+          <rect x="55" y="90" width="190" height="90" fill="#F2EDE4" opacity="0.06" rx="1"/>
+          <rect x="90" y="110" width="120" height="50" fill="#E0D8CB" opacity="0.09" rx="1"/>
+        </svg>
+      </div>
+      <div class="room-body">
+        <div class="room-cat">Deluxe — 35 m²</div>
+        <div class="room-name">Chambre Lande</div>
+        <div class="room-tags">
+          <span class="tag">Douche extérieure</span>
+          <span class="tag">Minibar bio</span>
+        </div>
+        <p class="room-desc">Grande chambre lumineuse aux parois en chêne blond. Linge de lit en lin lavé, soins Caudalie à disposition. 7 chambres disponibles.</p>
+        <div class="room-ft">
+          <div class="room-price">320 € <small>/ nuit</small></div>
+          <a href="#reservation" class="room-resa">Réserver</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="room fade">
+      <div class="room-img">
+        <svg width="100%" height="180" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="180" fill="#1C3A2A"/>
+          <rect x="40" y="0" width="11" height="180" fill="#162e20" rx="3"/>
+          <rect x="150" y="0" width="16" height="180" fill="#1a3426" rx="3"/>
+          <rect x="250" y="0" width="9" height="180" fill="#162e20" rx="3"/>
+          <rect x="60" y="95" width="180" height="85" fill="#F2EDE4" opacity="0.07" rx="1"/>
+          <rect x="100" y="115" width="100" height="45" fill="#F2EDE4" opacity="0.1" rx="1"/>
+          <circle cx="150" cy="97" r="3" fill="#B9986A" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="room-body">
+        <div class="room-cat">Supérieure — 25 m²</div>
+        <div class="room-name">Chambre Pin</div>
+        <div class="room-tags">
+          <span class="tag">Baie forêt</span>
+          <span class="tag">Bureau en bois</span>
+        </div>
+        <p class="room-desc">L'entrée dans l'univers Silve. Cosy et précise, elle cadre la forêt comme un tableau vivant. 10 chambres disponibles.</p>
+        <div class="room-ft">
+          <div class="room-price">220 € <small>/ nuit</small></div>
+          <a href="#reservation" class="room-resa">Réserver</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- THE NERVE -->
+<section class="nerve-section" id="restaurant">
+  <div class="nerve-left fade">
+    <div class="nerve-star-badge">
+      <span style="color:var(--or-light);font-size:0.9rem">★</span>
+      <span>Guide Michelin</span>
+    </div>
+    <h2 class="nerve-title">The Nerve</h2>
+    <div class="nerve-italic">Restaurant gastronomique</div>
+    <p class="nerve-sub">Une cuisine qui nourrit autant l'esprit que le corps. The Nerve travaille exclusivement avec des produits vivants, des circuits ultra-courts et des techniques qui préservent les micronutriments. Chaque assiette est conçue comme un soin.</p>
+    <div class="nerve-menu">
+      <div class="nerve-dish">
+        <span class="dish-name">Bouillon de pins, truffe d'été, mousse de topinambour</span>
+        <span class="dish-note">Détox · Anti-inflammatoire</span>
+      </div>
+      <div class="nerve-dish">
+        <span class="dish-name">Sole des Landes, algues marines, jus de plantes sauvages</span>
+        <span class="dish-note">Oméga-3 · Minéraux</span>
+      </div>
+      <div class="nerve-dish">
+        <span class="dish-name">Cèpes du domaine, polenta de maïs landais, huile de pin</span>
+        <span class="dish-note">Adaptogène · Végétal</span>
+      </div>
+      <div class="nerve-dish">
+        <span class="dish-name">Sphère de chocolat noir 90%, miel de pin, pollen frais</span>
+        <span class="dish-note">Antioxydant · Bienfaisant</span>
+      </div>
+    </div>
+  </div>
+  <div class="nerve-right">
+    <div class="nerve-visual"></div>
+    <div class="nerve-quote">
+      <p class="nerve-q">"Manger bien, c'est aussi soigner ce que l'on ne voit pas."</p>
+      <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,248,244,0.25);margin-top:1.2rem">Chef — The Nerve</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPA CAUDALIE -->
+<section class="caudalie-section" id="spa">
+  <div class="caudalie-visual"></div>
+  <div class="caudalie-content fade">
+    <div class="caudalie-partner">Partenariat exclusif · Caudalie</div>
+    <h2 class="caudalie-h">Spa<br><em>&amp; Vinothérapie</em></h2>
+    <p class="caudalie-p">En collaboration avec Caudalie — maison bordelaise pionnière de la vinothérapie —, notre spa propose des soins d'exception alliant les actifs du raisin et les vertus des résines de pin landais. Un protocole unique, conçu exclusivement pour Silve.</p>
+    <div class="soins-list">
+      <div class="soin">Massage Miel &amp; Vin — Enveloppement corps complet</div>
+      <div class="soin">Soin Résine de Pin — Anti-stress profond, 90 min</div>
+      <div class="soin">Bain de Polyphénols — Bain privatif + soin du visage</div>
+      <div class="soin">Rituel Forêt — Protocole 3h, in &amp; out, toutes saisons</div>
+      <div class="soin">Cure Détox — Programme 3 à 7 nuits, sur mesure</div>
+    </div>
+  </div>
+</section>
+
+<!-- RETRAITES DÉTOX -->
+<section class="detox-section" id="retraites">
+  <div class="detox-header fade">
+    <div class="eye" style="justify-content:center">Programmes</div>
+    <h2 class="detox-h">Retraites<br><em>&amp; séjours détox</em></h2>
+    <p class="detox-sub">Toutes saisons · 3, 5 ou 7 nuits · Sur-mesure possible</p>
+  </div>
+  <div class="detox-grid">
+    <div class="detox-item fade">
+      <div class="detox-num">01</div>
+      <div class="detox-name">Retraite <em>Silence</em></div>
+      <p class="detox-desc">Déconnexion totale. Pas d'écrans, pas de bruit. Randonnées en forêt, soins Caudalie, cuisine végétale de The Nerve et méditation à l'aube.</p>
+    </div>
+    <div class="detox-item fade">
+      <div class="detox-num">02</div>
+      <div class="detox-name">Cure <em>Détox Corps</em></div>
+      <p class="detox-desc">Programme 5 nuits accompagné par notre naturopathe. Nutrition ciblée, drainages, bains de forêt et bilan de vitalité à l'entrée et à la sortie.</p>
+    </div>
+    <div class="detox-item fade">
+      <div class="detox-num">03</div>
+      <div class="detox-name">Retraite <em>Hivernale</em></div>
+      <p class="detox-desc">La forêt en hiver est une thérapie. Feux de cheminée, brume des sous-bois, soins chauds, et une quiétude que seul l'hiver landais sait offrir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSERVATION -->
+<section class="resa-section" id="reservation">
+  <div class="resa-eye">Disponibilités</div>
+  <h2 class="resa-h">Votre séjour<br><em>vous attend</em></h2>
+  <p class="resa-sub">Réservation directe · Meilleur tarif garanti · Annulation flexible</p>
+  <div class="resa-widget">
+    <input class="resa-field" type="text" placeholder="Arrivée">
+    <input class="resa-field" type="text" placeholder="Départ">
+    <select class="resa-select">
+      <option value="">Chambre</option>
+      <option>Supérieure — 25 m²</option>
+      <option>Deluxe — 35 m²</option>
+      <option>Suite — 55 m²</option>
+    </select>
+    <button class="resa-btn">Vérifier</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Silve</div>
+      <p class="footer-tag">
+        Hôtel 5 étoiles &amp; Retreat<br>
+        Forêt des Landes, Aquitaine<br>
+        Route de la Forêt · 40660 Moliets-et-Maâ
+      </p>
+    </div>
+    <div>
+      <div class="footer-col-h">Séjours</div>
+      <ul class="footer-ul">
+        <li><a href="#">Chambres supérieures</a></li>
+        <li><a href="#">Chambres deluxe</a></li>
+        <li><a href="#">Suites canopée</a></li>
+        <li><a href="#">Retraites détox</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Le domaine</div>
+      <ul class="footer-ul">
+        <li><a href="#">The Nerve ★</a></li>
+        <li><a href="#">Spa Caudalie</a></li>
+        <li><a href="#">Bain de forêt</a></li>
+        <li><a href="#">Ateliers &amp; nature</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-h">Contact</div>
+      <ul class="footer-ul">
+        <li><a href="#">+33 5 58 XX XX XX</a></li>
+        <li><a href="#">sejour@silve-hotel.fr</a></li>
+        <li><a href="#">Accès GPS</a></li>
+        <li><a href="#">Presse &amp; partenaires</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Silve Hôtel &amp; Retreat. Tous droits réservés.</span>
+    <span>Mentions légales · Confidentialité · CGV</span>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 90);
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
