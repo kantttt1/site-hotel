@@ -1,1 +1,1 @@
-# site-hotel
+# The Hub
